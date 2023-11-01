@@ -1,3 +1,6 @@
+
 export async function GET(req: Request) {
-    return new Response('Hello world!')
+
+    const data = { time: new Date().toLocaleString() }
+    return new Response(JSON.stringify(data))
 }
