@@ -1,14 +1,43 @@
 "use client";
-import React, { useState } from "react";
+import { signIn } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
+import React, { useRef, useState } from "react";
 import { TEInput, TERipple } from "tw-elements-react";
 
-type error = {
-  status: boolean;
-  message?: string;
-};
-
 export default function LoginForm(): JSX.Element {
-  const [error, setError] = useState('User already exists!');
+  const email = useRef("");
+  const password = useRef("");
+  const [error, setError] = useState("");
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.current || !password.current) {
+      console.log("err");
+      return setError("All fields are necessary");
+    } else setError("");
+
+    try {
+      const res = await signIn("credentials", {
+        email: email.current,
+        password: password.current,
+        redirect: false,
+      });
+
+      if (res?.error) {
+        console.log(res.error);
+        setError("Invalid credentials!");
+      }
+
+      router.replace("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="h-screen">
@@ -25,7 +54,7 @@ export default function LoginForm(): JSX.Element {
 
           {/* <!-- Right column container --> */}
           <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
-            <form>
+            <form ref={formRef} onSubmit={handleSubmit}>
               {/* <!--Sign in section--> */}
               <div className="flex flex-row items-center justify-center lg:justify-start">
                 <p className="mb-0 mr-4 text-lg">Login with</p>
@@ -98,6 +127,7 @@ export default function LoginForm(): JSX.Element {
                 label="Email address"
                 size="lg"
                 className="mb-6"
+                onChange={(e) => (email.current = e.target.value)}
               ></TEInput>
 
               {/* <!--Password input--> */}
@@ -106,13 +136,12 @@ export default function LoginForm(): JSX.Element {
                 label="Password"
                 className="mb-3"
                 size="lg"
+                onChange={(e) => (password.current = e.target.value)}
               ></TEInput>
 
               {error && (
                 <div className="mb-4">
-                  <p className=" text-red-600 font-semibold ">
-                    {error}
-                  </p>
+                  <p className=" text-red-600 font-semibold ">{error}</p>
                 </div>
               )}
 
@@ -141,7 +170,7 @@ export default function LoginForm(): JSX.Element {
               <div className="text-center lg:text-left">
                 <TERipple rippleColor="light">
                   <button
-                    type="button"
+                    type="submit"
                     className="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                   >
                     Login

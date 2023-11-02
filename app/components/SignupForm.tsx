@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { TEInput, TERipple } from "tw-elements-react";
+import { useRouter } from "next/navigation";
 
 export default function SignupForm(): JSX.Element {
   const [error, setError] = useState<string>();
@@ -8,6 +9,8 @@ export default function SignupForm(): JSX.Element {
   const email = useRef("");
   const password = useRef("");
   const formRef = useRef<HTMLFormElement | null>(null);
+
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,6 +22,14 @@ export default function SignupForm(): JSX.Element {
     }
 
     try {
+      const resUserExist = await fetch("/api/userExist", {
+        method: "POST",
+        body: JSON.stringify({ email: email.current }),
+      });
+
+      const { user } = await resUserExist.json();
+      if (user) return setError("User with this email exists!");
+
       const res = await fetch("/api/register", {
         method: "POST",
         body: JSON.stringify({
@@ -29,9 +40,12 @@ export default function SignupForm(): JSX.Element {
       });
       if (res.ok) {
         formRef.current?.reset();
+        router.push("/dashboard");
       } else console.log("Registration failed!");
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      if (error.response.status === 409) {
+        setError(error.response.message);
+      }
     }
   };
 
