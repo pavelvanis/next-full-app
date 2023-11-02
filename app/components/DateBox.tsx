@@ -1,6 +1,6 @@
 "use client";
 import { useHydration } from "@/hooks/useHydration";
-import { MyDate } from "../../types";
+import { MyDate } from "../../lib/types";
 import React, { useEffect, useState } from "react";
 
 /**

@@ -18,6 +18,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tw-elements-react/dist/plugin.cjs")],
 };
 export default config;

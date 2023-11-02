@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Next from "../public/next.svg";
 import DateBox from "./components/DateBox";
+import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
 
 export default function Home() {
   return (
@@ -25,7 +27,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="login"></section>
+      <section id="login">
+        <SignupForm />
+        <LoginForm />
+      </section>
     </main>
   );
 }
