@@ -1,3 +1,3 @@
 export type MyDate = {
-    time: string
-}
+  time: string;
+};
