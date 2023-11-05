@@ -7,9 +7,8 @@ import SignupForm from "./components/SignupForm";
 export default function Home() {
   return (
     <main className="container min-h-screen items-center">
-      <DateBox />
       <section id="home" className=" h-screen flex items-center justify-center">
-        <div className="flex flex-col md:flex-row items-end">
+        <div className="flex flex-col md:flex-row items-end mb-16">
           <Image
             width={100}
             height={50}
@@ -27,9 +26,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="login">
-        <SignupForm />
+      <section id="signin">
         <LoginForm />
+      </section>
+      <section id="signup">
+        <SignupForm />
       </section>
     </main>
   );

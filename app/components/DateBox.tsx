@@ -26,7 +26,7 @@ const DateBox = () => {
 
   // Render the time on the page
   return (
-    <div className="absolute right-14 top-6 px-2 py-1">
+    <div className="px-2 py-1 w-min">
       {hydrated ? (
         <time className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-700">
           {time}

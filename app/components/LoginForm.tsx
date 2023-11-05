@@ -1,6 +1,7 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { redirect } from "next/dist/server/api-utils";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 import { TEInput, TERipple } from "tw-elements-react";
@@ -180,12 +181,12 @@ export default function LoginForm(): JSX.Element {
                 {/* <!-- Register link --> */}
                 <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
                   Don&apos;t have an account?
-                  <a
-                    href="#!"
+                  <Link
+                    href="/#signup"
                     className=" ps-2 text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
                   >
                     Register
-                  </a>
+                  </Link>
                 </p>
               </div>
             </form>
