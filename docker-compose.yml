@@ -1,0 +1,20 @@
+services:
+  web:
+    # image: next-app
+    build:
+      context: .
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      dockerfile: ./Dockerfile
+    container_name: next-full-app
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    volumes:
+      - app-data:/app/data
+volumes:
+  app-data:
