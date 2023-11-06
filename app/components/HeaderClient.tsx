@@ -16,6 +16,10 @@ const links: HeaderLinkType[] = [
     href: "/#signup",
     title: "Sign up",
   },
+  {
+    href: "/dashboard",
+    title: "Dashboard",
+  },
 ];
 
 const test = {

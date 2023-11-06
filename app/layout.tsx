@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Next app created for testing",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

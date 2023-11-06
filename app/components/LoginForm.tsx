@@ -41,7 +41,7 @@ export default function LoginForm(): JSX.Element {
   };
 
   return (
-    <section className="h-screen">
+    <section className="my-32">
       <div className="h-full">
         {/* <!-- Left column container with background--> */}
         <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">

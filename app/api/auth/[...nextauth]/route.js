@@ -4,7 +4,7 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
-const authOptions = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -23,6 +23,8 @@ const authOptions = {
 
           if (!passwordMatch) return null;
 
+          // const user = {password: 'heslo', name: 'Sam Scott', email: 'exampl@gmail.com'}
+
           return user;
         } catch (error) {
           console.error(error);
@@ -35,7 +37,7 @@ const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/#signin",
+    signIn: "/",
   },
 };
 
