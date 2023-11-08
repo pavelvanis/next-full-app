@@ -23,8 +23,6 @@ export const authOptions = {
 
           if (!passwordMatch) return null;
 
-          // const user = {password: 'heslo', name: 'Sam Scott', email: 'exampl@gmail.com'}
-
           return user;
         } catch (error) {
           console.error(error);
@@ -37,7 +35,7 @@ export const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/",
+    signIn: "/login",
   },
 };
 
