@@ -3,15 +3,15 @@ import { Menu } from "@headlessui/react";
 import {
   LogOut,
   LucideIcon,
-  UserCircle,
   User2,
   LucideProps,
   Settings,
   FileEdit,
+  UserCircle2,
 } from "lucide-react";
-import Image from "next/image";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React, { Fragment, HTMLAttributes, HTMLProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type DropDownLinkProps = {
@@ -21,6 +21,7 @@ export type DropDownLinkProps = {
   className?: string;
   onActive?: string;
   imgProps?: LucideProps;
+  attributes?: HTMLAttributes<HTMLAnchorElement>; // Použití HTMLAttributes pro odkazy
 };
 
 const links: DropDownLinkProps[][] = [
@@ -51,18 +52,27 @@ const links: DropDownLinkProps[][] = [
       imgProps: {
         strokeWidth: 2.9,
       },
+      attributes: {
+        onClick: () => signOut(),
+      },
     },
   ],
 ];
 
 const styles = {
-  base: "w-full p-1 h-8 rounded-md text-sm",
+  base: "w-full p-2 h-9 rounded-md text-md",
   active: "bg-primary-500 text-white",
 };
 
 const Item = ({ link }: { link: DropDownLinkProps }): React.JSX.Element => {
-  const { title, href, className, imgProps, onActive }: DropDownLinkProps =
-    link;
+  const {
+    title,
+    href,
+    className,
+    imgProps,
+    onActive,
+    attributes,
+  }: DropDownLinkProps = link;
   return (
     <Menu.Item key={title} as={Fragment}>
       {({ active }) => (
@@ -75,6 +85,7 @@ const Item = ({ link }: { link: DropDownLinkProps }): React.JSX.Element => {
             active && onActive,
             "flex grid-cols-2 items-center gap-[.2em]"
           ).trim()}
+          {...attributes}
         >
           <div className="w-7">
             {link.image && (
@@ -91,16 +102,16 @@ const Item = ({ link }: { link: DropDownLinkProps }): React.JSX.Element => {
 const Dropdown = () => {
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="focus:outline-none">
-        <UserCircle className="w-10 h-10" size={128} strokeWidth=".08rem" />
+      <Menu.Button className=" group focus-visible:normal-case focus:outline-none  transition-all duration-200">
+        <UserCircle2 className="w-12 h-10 " size={128} strokeWidth=".08rem" />
       </Menu.Button>
       <Menu.Items className="absolute w-48 right-0 border bg-gray-50 flex flex-col rounded-md">
         <div className="flex flex-col divide-y divide-gray-200">
           {links?.map((list) => {
             return (
-              <div className="p-[.3rem]">
+              <div key={list.toString()} className="p-[.3rem]">
                 {list.map((link) => {
-                  return <Item link={link} />;
+                  return <Item key={link.title} link={link} />;
                 })}
               </div>
             );
