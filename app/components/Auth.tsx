@@ -1,6 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
@@ -139,7 +140,7 @@ export const CredentialsLogin = () => {
       });
 
       const { user } = await resUserExist.json();
-      if (!user) return setError("This user doesnt exist!");
+      if (!user) return setError("This user does not exist!");
 
       const res = await signIn("credentials", {
         email: credentials.current.email,
@@ -185,7 +186,7 @@ export const CredentialsLogin = () => {
           </div>
         )}
       </div>
-      <div className=" mb-3 flex flex-col justify-end items-end gap-4">
+      <div className=" flex flex-col justify-end items-end gap-4">
         <button
           type="submit"
           className=" w-[90%] self-center font-medium border-[.12rem] px-2 py-0.5 rounded-md border-black hover:bg-gray-200 hover:scale-[.97]"
@@ -200,5 +201,46 @@ export const CredentialsLogin = () => {
         </Link>
       </div>
     </form>
+  );
+};
+
+export type ProviderCardProps = {
+  image: string;
+  link: string;
+  title: string;
+};
+
+export const providers: ProviderCardProps[] = [
+  {
+    image: "https://www.svgrepo.com/show/509967/github.svg",
+    title: "Github",
+    link: "",
+  },
+  {
+    image: "https://www.svgrepo.com/show/494349/linkedin.svg",
+    title: "Linkedin",
+    link: "",
+  },
+  {
+    image: "https://www.svgrepo.com/show/508761/apple.svg",
+    title: "Apple ID",
+    link: "",
+  },
+];
+
+export const ProviderCard: React.FC<ProviderCardProps> = ({
+  image,
+  title,
+  link,
+}) => {
+  return (
+    <Link
+      href={link}
+      className="h-13 flex flex-row items-center justify-center rounded-md border-2 border-black px-2 py-1 font-light transition-all duration-300 hover:bg-gray-200 hover:-translate-y-[.15rem] hover:shadow-lg"
+    >
+      <Image src={image} alt="" className="me-2 w-8 p-1" />
+      Sign up with
+      <span className="ms-1 font-medium">{title}</span>
+    </Link>
   );
 };

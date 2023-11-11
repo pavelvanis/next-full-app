@@ -1,12 +1,12 @@
 "use client";
-import { TEInput } from "tw-elements-react";
 import { CredentialsSignup } from "../components/Auth";
 import { UserPlus2 } from "lucide-react";
+import Link from "next/link";
 
 export default function SignupForm(): JSX.Element {
   return (
     <main className="flex h-full w-full items-center justify-center">
-      <section className="w-[22rem] flex flex-col items-center justify-center bg-gray-100 p-7 pt-4 border border-gray-300 rounded-md shadow-lg ">
+      <section className="w-[22rem] mt-10 flex flex-col items-center justify-center bg-gray-100 p-7 pt-4 border border-gray-300 rounded-md shadow-lg ">
         <div className="bg-gray-100 w-full text-center py-2 rounded-md flex flex-row justify-center items-center gap-2">
           <h2 className="text-xl font-semibold">Signup</h2>
           <UserPlus2 strokeWidth={2.5} className="p-[.1rem]" />
@@ -18,7 +18,7 @@ export default function SignupForm(): JSX.Element {
               OR
             </span>
           </div>
-          <a
+          <Link
             href="/"
             className="h-13 flex flex-row items-center justify-center rounded-md border-2 border-black px-2 py-1 font-light transition-all duration-300 hover:bg-gray-200 hover:-translate-y-[.15rem] hover:shadow-lg"
           >
@@ -29,8 +29,8 @@ export default function SignupForm(): JSX.Element {
             />
             Sign up with
             <span className="ms-1 font-medium">GitHub</span>
-          </a>
-          <a
+          </Link>
+          <Link
             href="/"
             className="flex flex-row items-center justify-center rounded-md border-2 border-black px-2 py-1 font-light transition-all duration-300 hover:bg-gray-200  hover:-translate-y-[.15rem]  hover:shadow-lg"
           >
@@ -41,8 +41,8 @@ export default function SignupForm(): JSX.Element {
             />
             Sign up with
             <span className="ms-1 font-medium">LinkedIn</span>
-          </a>
-          <a
+          </Link>
+          <Link
             href="/"
             className="flex flex-row items-center justify-center rounded-md border-2 border-black px-2 py-1 font-light transition-all duration-300 hover:bg-gray-200  hover:-translate-y-[.15rem]  hover:shadow-lg"
           >
@@ -53,7 +53,7 @@ export default function SignupForm(): JSX.Element {
             />
             Sign up with
             <span className="ms-1 font-medium">Apple ID</span>
-          </a>
+          </Link>
         </div>
       </section>
     </main>

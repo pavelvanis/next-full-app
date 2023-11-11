@@ -16,13 +16,13 @@
   }
 }
 
-main {
-  flex: 1; /* Využijte všechnu dostupnou volnou výšku mezi headerem a footrem */
+/* main {
+  flex: 1; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
 body {
   min-height: 100vh;
