@@ -11,8 +11,7 @@ const variants = {
 
 const Header = async () => {
   const session = await getServerSession();
-
-  console.log(session);
+  // console.log(session);
 
   return (
     <>
@@ -31,8 +30,7 @@ const Header = async () => {
             />
             UniPass
           </a>
-          {/* {session?.user ? <Logged /> : <LoggedOut />} */}
-          <Logged/>
+          {session?.user ? <Logged /> : <LoggedOut />}
         </nav>
       </header>
     </>
@@ -61,42 +59,5 @@ export const LoggedOut = () => {
 };
 
 export const Logged = () => {
-  return (
-    <Dropdown/>
-  );
+  return <Dropdown />;
 };
-
-const links: DropDownLinkProps[][] = [
-  [
-    {
-      href: "#",
-      title: "Profile",
-      image: User2,
-    },
-    {
-      href: "#",
-      title: "Settings",
-      image: Settings,
-    },
-    {
-      href: "#",
-      title: "Edit",
-      image: FileEdit,
-    },
-  ],
-  [
-    {
-      href: "#",
-      title: "Log out",
-      className: "text-red-500 font-medium",
-      onActive: "bg-red-500 text-white",
-      image: LogOut,
-      imgProps: {
-        strokeWidth: 2.9,
-      },
-      attributes: {
-        onClick: () => signOut(),
-      },
-    },
-  ],
-];

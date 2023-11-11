@@ -16,7 +16,6 @@ export const authOptions = {
         try {
           await connectMongoDB();
           const user = await User.findOne({ email });
-
           if (!user) return null;
 
           const passwordMatch = await bcrypt.compare(password, user.password);

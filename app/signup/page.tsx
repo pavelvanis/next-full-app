@@ -5,11 +5,11 @@ import { UserPlus2 } from "lucide-react";
 
 export default function SignupForm(): JSX.Element {
   return (
-    <main className="flex w-full items-start justify-center">
-      <section className="mt-52 w-80 flex flex-col items-center justify-center bg-gray-100 p-7 pt-4 border border-gray-300 rounded-md shadow-lg ">
+    <main className="flex h-full w-full items-center justify-center">
+      <section className="w-[22rem] flex flex-col items-center justify-center bg-gray-100 p-7 pt-4 border border-gray-300 rounded-md shadow-lg ">
         <div className="bg-gray-100 w-full text-center py-2 rounded-md flex flex-row justify-center items-center gap-2">
-          <h2 className="text-xl">Signup</h2>
-          <UserPlus2 className="p-[.1rem]" />
+          <h2 className="text-xl font-semibold">Signup</h2>
+          <UserPlus2 strokeWidth={2.5} className="p-[.1rem]" />
         </div>
         <CredentialsSignup />
         <div className=" w-full flex flex-col gap-[.35rem]">
