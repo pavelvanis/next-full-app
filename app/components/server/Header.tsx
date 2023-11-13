@@ -1,9 +1,9 @@
-import { FileEdit, LogOut, Settings, User2, UserCircle2 } from "lucide-react";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
-import Dropdown, { DropDownLinkProps } from "./Dropdown";
-import { signOut } from "next-auth/react";
+import Dropdown from "../Dropdown";
 import Link from "next/link";
+import { link } from "fs";
+import { Menu } from "../header-client";
 
 const variants = {
   logged: "p-4 px-6 shadow-md",
@@ -12,7 +12,6 @@ const variants = {
 
 const Header = async () => {
   const session = await getServerSession();
-  // console.log(session);
 
   return (
     <>
@@ -31,6 +30,7 @@ const Header = async () => {
             />
             UniPass
           </Link>
+          <Menu />
           {session?.user ? <Logged /> : <LoggedOut />}
         </nav>
       </header>
@@ -39,6 +39,30 @@ const Header = async () => {
 };
 
 export default Header;
+
+export type HeaderLinkProps = {
+  title: string;
+  link: string;
+  active: boolean;
+};
+
+export const links: HeaderLinkProps[] = [
+  {
+    title: "Home",
+    link: "/",
+    active: true,
+  },
+  {
+    title: "Subjects",
+    link: "/",
+    active: false,
+  },
+  {
+    title: "Subject",
+    link: "/",
+    active: false,
+  },
+];
 
 export const LoggedOut = () => {
   return (

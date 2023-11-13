@@ -1,5 +1,5 @@
 export async function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+  return [{ user: "lordknedlik" }, { user: "admin" }];
 }
 
 export default function Page({
@@ -8,6 +8,10 @@ export default function Page({
   params: { user: string; image: string };
 }) {
   const { user } = params;
-  console.log(params);
 
+  return (
+    <main>
+      <h1>{user}</h1>
+    </main>
+  );
 }
