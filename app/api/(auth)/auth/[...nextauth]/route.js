@@ -25,6 +25,7 @@ export const authOptions = {
           return user;
         } catch (error) {
           console.error(error);
+          return null;
         }
       },
     }),

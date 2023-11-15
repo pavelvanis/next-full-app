@@ -54,12 +54,12 @@ export const links: HeaderLinkProps[] = [
   },
   {
     title: "Subjects",
-    link: "/",
+    link: "/subjects",
     active: false,
   },
   {
     title: "Subject",
-    link: "/",
+    link: "/subject",
     active: false,
   },
 ];

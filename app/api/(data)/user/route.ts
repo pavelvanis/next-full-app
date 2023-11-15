@@ -2,13 +2,14 @@ import bcrypt from "bcryptjs";
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import { passwordValidation } from "@/lib/services/validation";
+import { connectMongoDB } from "@/lib/mongodb";
 
 export const GET = async (req: NextRequest) => {
   try {
-    const users = await User.find({}, { __v: 0 });
-    console.log(users);
+    await connectMongoDB();
+    const users = await User.find({}, { __v: 0, password: 0 });
 
-    return NextResponse.json({ users });
+    return NextResponse.json(users);
   } catch (error) {
     console.error(error);
     return NextResponse.json(
@@ -38,7 +39,8 @@ export const POST = async (req: NextRequest) => {
     }
 
     const pass = passwordValidation(password);
-    if (pass) return NextResponse.json({ message: pass }, { status: 401 });
+    if (pass.length !== 0)
+      return NextResponse.json({ message: pass }, { status: 401 });
 
     const hashedPassword = await bcrypt.hash(password, 10);
     await User.create({ name, email, password: hashedPassword });

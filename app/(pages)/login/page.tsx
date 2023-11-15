@@ -2,8 +2,8 @@ import { UserCheck2, UserPlus2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { CredentialsLogin } from "../components/Auth";
-import { ProviderCard, providers } from "../components/server/Auth";
+import { CredentialsLogin } from "../../components/Auth";
+import { ProviderCard, providers } from "../../components/server/Auth";
 
 export default function Login(): JSX.Element {
   return (

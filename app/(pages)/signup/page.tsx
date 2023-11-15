@@ -1,5 +1,5 @@
 "use client";
-import { CredentialsSignup } from "../components/Auth";
+import { CredentialsSignup } from "../../components/Auth";
 import { UserPlus2 } from "lucide-react";
 import Link from "next/link";
 
