@@ -1,11 +1,12 @@
-import { connectMongoDB } from "@/lib/mongodb";
+import { connect } from "@/lib/mongodb";
 import User from "@/models/user";
+
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
     const { email } = await req.json();
-    await connectMongoDB();
+    await connect();
     const user = await User.findOne({ email });
     return NextResponse.json({ user });
   } catch (error) {

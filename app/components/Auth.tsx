@@ -28,7 +28,7 @@ export const CredentialsSignup = () => {
     setError("");
 
     try {
-      const res = await fetch("api/user/", {
+      const res = await fetch("api/users/", {
         method: "POST",
         body: JSON.stringify({ ...credentials.current }),
       });
