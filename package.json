@@ -13,6 +13,7 @@
     "@edgestore/server": "^0.1.4",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "amqplib": "^0.10.3",
     "bcryptjs": "^2.4.3",
     "limiter": "^2.1.0",
     "lucide-react": "^0.292.0",

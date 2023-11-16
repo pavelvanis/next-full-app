@@ -134,13 +134,13 @@ export const CredentialsLogin = () => {
       return setError("Please fill all credentials!");
     setError("");
     try {
-      const resUserExist = await fetch("/api/userExist", {
-        method: "POST",
-        body: JSON.stringify({ email: credentials.current.email }),
-      });
+      // const resUserExist = await fetch("/api/userExist", {
+      //   method: "POST",
+      //   body: JSON.stringify({ email: credentials.current.email }),
+      // });
 
-      const { user } = await resUserExist.json();
-      if (!user) return setError("This user does not exist!");
+      // const { user } = await resUserExist.json();
+      // if (!user) return setError("This user does not exist!");
 
       const res = await signIn("credentials", {
         email: credentials.current.email,
@@ -153,7 +153,7 @@ export const CredentialsLogin = () => {
         return setError("Bad password!");
       }
       formRef.current?.reset();
-      router.push(`/${user.name}`);
+      router.push(`/user`);
     } catch (error) {
       console.error(error);
       setError("Something went wrong!");

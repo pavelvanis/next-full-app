@@ -1,14 +1,12 @@
-import { UserCheck2, UserPlus2 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { UserCheck2 } from "lucide-react";
 import React from "react";
 import { CredentialsLogin } from "../../components/Auth";
-import { ProviderCard, providers } from "../../components/server/Auth";
+import { ProviderCard, providers } from "@/app/components/server/Auth";
 
 export default function Login(): JSX.Element {
   return (
     <main className="m-auto mt-20">
-      <section className=" w-[90%] h-full md:w-[22rem] mt-10 md:mt-0 flex flex-col items-center justify-center md:bg-gray-100 p-7 pt-4 md:border border-gray-300 rounded-md md:shadow-lg ">
+      <section className=" w-[90%] h-full md:w-[24rem] mt-10 flex flex-col items-center justify-center md:bg-gray-100 p-7 pt-4 md:border border-gray-300 rounded-md md:shadow-lg ">
         <div className=" mb-1 md:mb-0 bg-gray-100 w-full text-center py-2 rounded-md flex flex-row justify-center items-center gap-2">
           <h2 className="text-xl font-semibold">Login</h2>
           <UserCheck2 strokeWidth={2.5} className="p-[.1rem]" />

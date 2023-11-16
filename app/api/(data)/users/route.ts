@@ -1,10 +1,15 @@
 import bcrypt from "bcryptjs";
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
-import { passwordValidation } from "@/lib/services/validation";
+import {
+  passwordValidation,
+  validEmail,
+  validName,
+} from "@/lib/services/utils";
 import { checkLimit } from "../../config/limiter";
 import { connect } from "@/lib/mongodb";
 
+// Get all users
 export const GET = async (req: NextRequest) => {
   try {
     await connect();
@@ -31,6 +36,7 @@ export const GET = async (req: NextRequest) => {
   }
 };
 
+// Create user
 export const POST = async (req: NextRequest) => {
   try {
     const { name, email, password } = await req.json();
@@ -42,6 +48,30 @@ export const POST = async (req: NextRequest) => {
         { status: 400 }
       );
     }
+
+    // Check email
+    const emailCheck = validEmail(email);
+    if (!emailCheck)
+      return NextResponse.json(
+        { message: "No valid email" },
+        {
+          status: 400,
+          statusText: "Invalid email",
+        }
+      );
+
+    // Check name
+    const nameCheck = validName(name);
+    if (nameCheck)
+      return NextResponse.json(
+        { message: nameCheck },
+        { status: 400, statusText: "Invalid name" }
+      );
+
+    // Check password
+    const passErrors = passwordValidation(password);
+    if (passErrors.length !== 0)
+      return NextResponse.json({ message: passErrors }, { status: 401 });
 
     // Connect to DB
     await connect();
@@ -58,11 +88,6 @@ export const POST = async (req: NextRequest) => {
     // Check request limit
     const limit = await checkLimit();
     if (limit) return limit;
-
-    // Check password validation
-    const pass = passwordValidation(password);
-    if (pass.length !== 0)
-      return NextResponse.json({ message: pass }, { status: 401 });
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);

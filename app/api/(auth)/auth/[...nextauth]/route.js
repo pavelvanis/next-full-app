@@ -1,10 +1,10 @@
-import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import { connect } from "@/lib/mongodb";
 
-export const authOptions = {
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -14,7 +14,7 @@ export const authOptions = {
         const { email, password } = credentials;
 
         try {
-          await connectMongoDB();
+          await connect();
           const user = await User.findOne({ email });
           if (!user) return null;
 

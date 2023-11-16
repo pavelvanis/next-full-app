@@ -55,7 +55,7 @@ export default function Home() {
   );
 }
 
-export const Card = () => {
+const Card = () => {
   return (
     <a className=" group flex h-[7rem] w-[8rem] p-4 cursor-pointer flex-col items-center justify-between rounded-sm border border-gray-400 bg-gray-50 transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
       <div className="relative h-full w-full">
