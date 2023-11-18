@@ -1,15 +1,28 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {
+  DM_Sans,
+  Inter,
+  Josefin_Sans,
+  Kanit,
+  Lora,
+  Marhey,
+} from "next/font/google";
 import "./globals.css";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
-import { AuthProvider } from "./components/Providers";
-import Header from "./components/server/Header";
+import { Providers } from "./components/Providers";
+import Header from "./components/server/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
+const kanit = Kanit({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+const josefin = Josefin_Sans({ subsets: ["latin"] });
+const marhey = Marhey({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next Full App",
-  description: "Next app created for testing",
+  title: "StudyHub",
+  description: "Web for sharing and collaborating",
 };
 
 export default async function RootLayout({
@@ -19,12 +32,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <AuthProvider>
-        <body className={inter.className}>
+      <Providers>
+        <body className={josefin.className}>
           <Header />
           {children}
         </body>
-      </AuthProvider>
+      </Providers>
     </html>
   );
 }

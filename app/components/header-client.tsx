@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { HeaderLinkProps, links } from "./server/Header";
+import { HeaderLinkProps, links } from "./server/header/header";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";
