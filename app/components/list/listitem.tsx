@@ -8,7 +8,7 @@ const variants = {
   md: "p-[.4rem]",
   lg: "p-2 text-xl",
   xl: "p-2.5 text-2xl",
-  base: "rounded-lg ps-4 flex gap-[.3rem] items-center font-normal",
+  base: "rounded-lg ps-4 flex gap-[.3rem] items-center font-normal hover:bg-blue-300 transition-all duration-300",
 };
 
 export type ListItemProps = {
@@ -17,7 +17,7 @@ export type ListItemProps = {
   as: "div" | "a";
   href?: string;
   size?: "sm" | "md" | "lg" | "xl";
-  image?: boolean;
+  onClick?: Function;
 };
 
 const itemVars = {
@@ -27,7 +27,7 @@ const itemVars = {
   animate: {
     scaleY: 1,
     transition: {
-      duration: 0.45,
+      duration: 0.5,
     },
   },
   exit: {
@@ -44,6 +44,7 @@ const ListItem: React.FC<ListItemProps> = ({
   className,
   href,
   size,
+  onClick,
 }): JSX.Element => {
   if (as === "a" && href) {
     return (
@@ -60,8 +61,10 @@ const ListItem: React.FC<ListItemProps> = ({
             className={twMerge(
               size ? variants[size] : variants.md,
               variants.base,
-              className
+              className,
+              ""
             )}
+            onClick={onClick ? () => onClick() : undefined}
           >
             {children}
           </Link>
@@ -83,6 +86,7 @@ const ListItem: React.FC<ListItemProps> = ({
             variants.base,
             className
           )}
+          onClick={() => onClick}
         >
           {children}
         </div>

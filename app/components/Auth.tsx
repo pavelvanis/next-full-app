@@ -191,7 +191,7 @@ export const CredentialsLogin = () => {
           type="submit"
           className=" w-[90%] self-center font-medium border-[.12rem] px-2 py-0.5 rounded-md border-black hover:bg-gray-200 hover:scale-[.97]"
         >
-          Sign up
+          Login
         </button>
         <Link
           href="/signup"
