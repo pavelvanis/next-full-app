@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function SignupForm(): JSX.Element {
   return (
-    <main className=" mt-20">
+    <main className="">
       <section className=" w-[90%] m-auto h-full max-w-[27rem] mt-10 flex flex-col items-center justify-center md:bg-gray-100 p-7 pt-4 md:border border-gray-300 rounded-md md:shadow-lg ">
         <div className=" mb-1 md:mb-0 bg-gray-100 w-full text-center py-2 rounded-md flex flex-row justify-center items-center gap-2">
           <h2 className="text-xl font-semibold">Signup</h2>
