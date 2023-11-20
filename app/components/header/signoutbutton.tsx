@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react";
-import ListItem from "../../list/listitem";
+import ListItem from "../list/listitem";
 import { signOut } from "next-auth/react";
 
 const SignoutButton = (): JSX.Element => {

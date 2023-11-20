@@ -2,11 +2,12 @@
 
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import OutsideClickHandler from "../../utils/OutsideClick";
+import OutsideClickHandler from "../utils/OutsideClick";
 import { motion, AnimatePresence } from "framer-motion";
 import HeaderLogged from "./logged";
 import { useSession } from "next-auth/react";
 import HeaderLoggedOut from "./loggedout";
+import { twMerge } from "tailwind-merge";
 
 const menuVars = {
   initial: {
@@ -31,18 +32,16 @@ const menuVars = {
   },
 };
 
-const OpenMenu = (): JSX.Element => {
+const OpenMenu = ({ className }: { className?: string }): JSX.Element => {
   const [opened, setOpened] = useState<boolean>(false);
   const { data: session, status } = useSession();
-  // const session = true;
-
-  console.log(session?.user?.name);
 
   const handleClick = () => {
     setOpened((prev) => (prev ? false : true));
   };
   return (
     <>
+      {/* Blured background */}
       {opened && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -50,8 +49,9 @@ const OpenMenu = (): JSX.Element => {
           className="absolute z-20 top-0 left-0 w-screen h-screen"
         />
       )}
+      {/* Menu */}
       <OutsideClickHandler
-        className=" flex items-center"
+        className={twMerge("flex items-center", className)}
         onOutsideClick={() => setOpened(false)}
       >
         <button onClick={handleClick} className="">

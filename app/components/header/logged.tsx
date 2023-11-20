@@ -1,8 +1,8 @@
 import { UserCircle2, Home, Settings, User2, LogOut } from "lucide-react";
-import ListGroup from "../../list/listgroup";
-import ListItem from "../../list/listitem";
+import ListGroup from "../list/listgroup";
+import ListItem from "../list/listitem";
 import { CloseButton } from "./closebutton";
-import List from "../../list/list";
+import List from "../list/list";
 import Link from "next/link";
 import { Session } from "next-auth";
 import SignoutButton from "./signoutbutton";

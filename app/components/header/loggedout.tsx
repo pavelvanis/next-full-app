@@ -1,8 +1,8 @@
 import { LogInIcon } from "lucide-react";
-import ListGroup from "../../list/listgroup";
-import ListItem from "../../list/listitem";
+import ListGroup from "../list/listgroup";
+import ListItem from "../list/listitem";
 import { CloseButton } from "./closebutton";
-import List from "../../list/list";
+import List from "../list/list";
 
 const HeaderLoggedOut: React.FC<{
   closeHandler: Function;
@@ -10,11 +10,22 @@ const HeaderLoggedOut: React.FC<{
   return (
     <List className=" divide-slate-600">
       <ListGroup>
-        <ListItem as="div" className="py-1 ps-2 h-12 hover:bg-transparent">
+        <ListItem as="div" className="py-1 ps-2 h-9 hover:bg-transparent">
           <div className="flex items-center justify-end w-full">
             <CloseButton onClick={closeHandler} />
           </div>
         </ListItem>
+        <ListItem as="a" href="/">
+          <span className="pt-[.2rem]">Projects</span>
+        </ListItem>
+        <ListItem as="a" href="/">
+          <span className="pt-[.2rem]">Solutions</span>
+        </ListItem>
+        <ListItem as="a" href="/">
+          <span className="pt-[.2rem]">Pricing</span>
+        </ListItem>
+      </ListGroup>
+      <ListGroup>
         <ListItem
           as="a"
           href="/login"

@@ -10,14 +10,17 @@ import {
 import "./globals.css";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { Providers } from "./components/Providers";
-import Header from "./components/server/header/header";
+import Header from "./components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
-const josefin = Josefin_Sans({ subsets: ["latin"] });
+const josefin = Josefin_Sans({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 const marhey = Marhey({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary: 0, 60, 255;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,6 +19,67 @@
 
 body {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+#background {
+  background: radial-gradient(
+    182.3% 69% at 50% 8.4%,
+    #ffffff 0%,
+    rgb(255, 255, 255) 28.35%,
+    rgba(255, 255, 255, 0.88) 46.4%,
+    hsla(0, 0%, 100%, 0) 99.95%
+  );
+}
+
+#background2 {
+  background: radial-gradient(
+    112.79999999999998% 100% at 0% 100%,
+    #003bff 0%,
+    hsl(219, 100%, 50%) 38.509540840001236%,
+    hsl(262, 100%, 67%) 74.08234947205608%,
+    hsl(287, 100%, 50%) 99.95393495930529%
+  );
+}
+
+a.link {
+  transition: all 1s ease-out;
+}
+
+a.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: all 1s ease-out;
+}
+
+a.active {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a.btn {
+  border-radius: 0.85rem;
+  padding: 0.25rem 0.66rem;
+  background: radial-gradient(
+    hsl(219, 100%, 50%) 28.509540840001236%,
+    hsl(262, 100%, 67%) 74.08234947205608%
+  );
+  color: white;
+}
+
+a.btn:hover {
+  background: radial-gradient(
+    hsl(219, 100%, 50%) 48.509540840001236%,
+    hsl(262, 100%, 67%) 74.08234947205608%
+  );
+  transition: all .4s ease-in-out;
+}
+
+.animate-logo {
+  overflow: visible;
+  stroke: #000;
+  stroke-width: .2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }

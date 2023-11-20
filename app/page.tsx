@@ -1,54 +1,24 @@
 import Image from "next/image";
 
-const cards = [
-  {
-    title: "Doc",
-    href: "#",
-    image: "",
-  },
-  {
-    title: "Doc",
-    href: "#",
-    image: "",
-  },
-  {
-    title: "Doc",
-    href: "#",
-    image: "",
-  },
-  {
-    title: "Doc",
-    href: "#",
-    image: "",
-  },
-  {
-    title: "Doc",
-    href: "#",
-    image: "",
-  },
-  {
-    title: "Doc",
-    href: "#",
-    image: "",
-  },
-];
-
 export default function Home() {
   return (
     <main>
-      <section
-        id="features"
-        className=" container  mt-10 md:mt-20 flex flex-col items-center p-4 text-center"
-      >
-        <h1 className="mb-5 text-4xl font-semibold">Provided features</h1>
-        <p className="mb-9 font-light max-w-md">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-          consequatur! Nisi quisquam ab.
-        </p>
-        <div className="grid w-fit grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-          {cards.map((card) => {
-            return <Card key={card.href} />;
-          })}
+      <section className=" h-screen w-screen relative flex flex-col items-center justify-center">
+        {/* White background */}
+        <div
+          id="background"
+          className=" h-full w-full absolute left-0 top-0 z-10"
+        ></div>
+        {/* Colors background */}
+        <div
+          id="background2"
+          className=" h-full w-full absolute left-0 top-0 z-0"
+        ></div>
+        {/* Content */}
+        <div className="h-fit z-20 w-[80%] max-w-4xl text-5xl">
+          <h1 className=" min-[500px]:text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-center">
+            Start studying effectively
+          </h1>
         </div>
       </section>
     </main>
