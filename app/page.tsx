@@ -1,4 +1,23 @@
+"use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+const animations = {
+  heading: {
+    initial: {
+      scaleY: 0,
+      scaleX: 0,
+    },
+    animate: {
+      scaleY: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
+  },
+};
 
 export default function Home() {
   return (
@@ -15,10 +34,27 @@ export default function Home() {
           className=" h-full w-full absolute left-0 top-0 z-0"
         ></div>
         {/* Content */}
-        <div className="h-fit z-20 w-[80%] max-w-4xl text-5xl">
-          <h1 className=" min-[500px]:text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-center">
-            Start studying effectively
-          </h1>
+        <div className="h-fit z-20 w-[80%] max-w-4xl ">
+          <motion.h1
+            // variants={animations.heading}
+            // initial="initial"
+            initial={{ opacity: 0, filter: "blur(1rem)" }}
+            animate={{
+              scaleY: [0, 1],
+              scaleX: [0, 1],
+              rotate: [-180, 0],
+              opacity: 1,
+              filter: "blur(0rem)",
+              transition: {
+                opacity: { duration: 1.8, ease: "easeInOut" },
+                duration: 1.3,
+                ease: "easeInOut",
+              },
+            }}
+            className="  origin-bottom text-h xs:text-h-xs sm:text-h-sm md:text-h-md lg:text-h-lg font-bold text-center"
+          >
+            Start studying effectively.
+          </motion.h1>
         </div>
       </section>
     </main>

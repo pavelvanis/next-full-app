@@ -19,8 +19,11 @@
 
 body {
   min-height: 100vh;
-  /* display: flex;
-  flex-direction: column; */
+}
+
+main {
+  height: 100%;
+  min-height: 100vh;
 }
 
 #background {
@@ -44,12 +47,12 @@ body {
 }
 
 a.link {
+  font-weight: 300;
   transition: all 1s ease-out;
 }
 
 a.link:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  font-weight: 400;
   transition: all 1s ease-out;
 }
 
@@ -58,28 +61,25 @@ a.active {
   text-underline-offset: 2px;
 }
 
-a.btn {
-  border-radius: 0.85rem;
-  padding: 0.25rem 0.66rem;
-  background: radial-gradient(
-    hsl(219, 100%, 50%) 28.509540840001236%,
-    hsl(262, 100%, 67%) 74.08234947205608%
+a.button {
+  background: linear-gradient(
+    to right bottom,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.35)
   );
-  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 1rem;
+  transition: all 0.35s ease-in-out;
 }
 
-a.btn:hover {
-  background: radial-gradient(
-    hsl(219, 100%, 50%) 48.509540840001236%,
-    hsl(262, 100%, 67%) 74.08234947205608%
-  );
-  transition: all .4s ease-in-out;
+a.button:hover {
+  padding: 0.58rem 0.88rem;
 }
 
 .animate-logo {
   overflow: visible;
   stroke: #000;
-  stroke-width: .2;
+  stroke-width: 0.2;
   stroke-linejoin: round;
   stroke-linecap: round;
 }

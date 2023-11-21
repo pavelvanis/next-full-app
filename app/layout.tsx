@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import {
-  DM_Sans,
-  Inter,
-  Josefin_Sans,
-  Kanit,
-  Lora,
-  Marhey,
-} from "next/font/google";
+import { Inter, Josefin_Sans, Kanit, Marhey } from "next/font/google";
 import "./globals.css";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { Providers } from "./components/Providers";

@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 const icon = {
   hidden: {
@@ -8,35 +9,18 @@ const icon = {
     pathLength: 1,
     fill: "rgba(0, 0, 0, 1)",
     transition: {
-      duration: 1.8,
+      duration: 2.2,
       ease: "easeInOut",
     },
   },
 };
 
-const svg = {
-  hidden: {
-    opacity: 0,
-    // scaleX: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 2.4,
-      ease: "easeInOut",
-    },
-  },
-};
-
-const Logo = () => (
+const Icon = () => (
   <motion.svg
     width="80px"
     height="80px"
     viewBox="0 0 32 32"
     className="h-10 w-fit p-[.15rem] animate-logo"
-    // variants={svg}
-    // initial="hidden"
-    // animate="visible"
   >
     <motion.path
       initial="hidden"
@@ -121,29 +105,8 @@ const Logo = () => (
   </motion.svg>
 );
 
-export default Logo;
+const LogoIcon = () => {
+  return <Icon />;
+};
 
-export const Example = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 100 100"
-    className=" h-20 w-16"
-  >
-    <motion.path
-      variants={icon}
-      initial="hidden"
-      animate="visible"
-      fill="none"
-      stroke="#000"
-      d="M40 40 L80 40 C80 40 80 80 40 80 C40 80 0 80 0 40 C0 40 0 0 40 0Z"
-    />
-    <motion.path
-      variants={icon}
-      initial="hidden"
-      animate="visible"
-      fill="none"
-      stroke="#000"
-      d="M50 30 L50 -10 C50 -10 90 -10 90 30 Z"
-    />
-  </svg>
-);
+export default LogoIcon;
